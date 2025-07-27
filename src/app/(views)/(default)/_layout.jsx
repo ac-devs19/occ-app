@@ -8,6 +8,7 @@ export default function DefaultLayout() {
       }}
     >
       <Stack.Screen name="(tabs)" />
+      <Stack.Screen name="(pages)" />
     </Stack>
   );
 }

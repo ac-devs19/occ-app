@@ -20,7 +20,7 @@ export default function SignIn() {
       >
         <View className="gap-6">
           <AppLogo />
-          <View className="gap-1">
+          <View className="gap-2">
             <Text variant="headlineLarge">Hello, Welcome!</Text>
             <Text variant="bodyLarge">Please login your account.</Text>
           </View>

@@ -10,7 +10,6 @@ import {
 import merge from "deepmerge";
 import { Colors } from "../color";
 import { Fonts } from "../font";
-import { useColorScheme } from "react-native";
 
 const customDarkTheme = {
   ...MD3DarkTheme,
@@ -32,8 +31,6 @@ const { LightTheme, DarkTheme } = adaptNavigationTheme({
 const CombinedDefaultTheme = merge(LightTheme, customLightTheme);
 const CombinedDarkTheme = merge(DarkTheme, customDarkTheme);
 
-export function getPaperTheme() {
-  const colorScheme = useColorScheme();
-
-  return colorScheme === "dark" ? CombinedDarkTheme : CombinedDefaultTheme;
+export function getPaperTheme(isDark) {
+  return isDark ? CombinedDarkTheme : CombinedDefaultTheme;
 }

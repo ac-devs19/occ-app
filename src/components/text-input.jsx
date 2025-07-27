@@ -13,15 +13,15 @@ export default function TextInput({
       mode="outlined"
       label={label}
       outlineStyle={{ borderRadius: 10 }}
-      secureTextEntry={!show}
+      secureTextEntry={secureTextEntry ? !show : false}
       keyboardType={keyboardType}
       right={
-        secureTextEntry && (
+        secureTextEntry ? (
           <TxtInpt.Icon
             onPress={() => setShow(!show)}
             icon={show ? "eye" : "eye-off"}
           />
-        )
+        ) : null
       }
     />
   );
