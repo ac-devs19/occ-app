@@ -5,11 +5,15 @@ import { useEffect } from "react";
 import { View } from "react-native";
 import { PaperProvider } from "react-native-paper";
 import { ThemeProvider as NavigationThemeProvider } from "@react-navigation/native";
-import { getPaperTheme } from "../constants/themes/paper-theme";
 import { ThemeProvider, useThemeContext } from "../contexts/theme-context";
 import { StatusBar } from "expo-status-bar";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { AuthProvider } from "../contexts/auth-context";
+import { getPaperTheme } from "../lib/paper-theme";
 
 SplashScreen.preventAutoHideAsync();
+
+const queryClient = new QueryClient();
 
 function InnerLayout() {
   const { isDark } = useThemeContext();
@@ -36,14 +40,16 @@ function InnerLayout() {
   return (
     <PaperProvider theme={paperTheme}>
       <NavigationThemeProvider value={paperTheme}>
-        <View
-          style={{ flex: 1, backgroundColor: paperTheme.colors.background }}
-        >
-          <Stack screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="index" />
-            <Stack.Screen name="(views)" />
-          </Stack>
-        </View>
+        <QueryClientProvider client={queryClient}>
+          <View
+            style={{ flex: 1, backgroundColor: paperTheme.colors.background }}
+          >
+            <Stack screenOptions={{ headerShown: false }}>
+              <Stack.Screen name="index" />
+              <Stack.Screen name="(views)" />
+            </Stack>
+          </View>
+        </QueryClientProvider>
         <StatusBar style={isDark ? "light" : "dark"} />
       </NavigationThemeProvider>
     </PaperProvider>
@@ -52,8 +58,10 @@ function InnerLayout() {
 
 export default function RootLayout() {
   return (
-    <ThemeProvider>
-      <InnerLayout />
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider>
+        <InnerLayout />
+      </ThemeProvider>
+    </AuthProvider>
   );
 }

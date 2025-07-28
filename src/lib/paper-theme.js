@@ -8,8 +8,8 @@ import {
   DefaultTheme as NavigationDefaultTheme,
 } from "@react-navigation/native";
 import merge from "deepmerge";
-import { Colors } from "../color";
-import { Fonts } from "../font";
+import { Colors } from "../constants/color";
+import { Fonts } from "../constants/font";
 
 const customDarkTheme = {
   ...MD3DarkTheme,

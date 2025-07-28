@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState, useContext } from "react";
 import { Appearance } from "react-native";
-import { getSavedTheme, saveTheme } from "../constants/themes/theme-storage";
+import { getSavedTheme, setSavedTheme } from "../services/theme-storage";
 
 const ThemeContext = createContext();
 
@@ -41,7 +41,7 @@ export const ThemeProvider = ({ children }) => {
 
   const changeTheme = async (newTheme) => {
     setTheme(newTheme);
-    await saveTheme(newTheme);
+    await setSavedTheme(newTheme);
   };
 
   return (

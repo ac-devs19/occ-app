@@ -6,18 +6,16 @@ export default function TabsLayout() {
   return (
     <Tabs
       screenOptions={{
-        headerTitleAlign: "center",
+        headerTitleStyle: {
+          fontFamily: "Figtree-Medium",
+        },
       }}
     >
       <Tabs.Screen
         options={{
           headerShown: false,
-          tabBarIcon: ({ focused, color, size }) => (
-            <Ionicons
-              name={focused ? "home" : "home-outline"}
-              size={size}
-              color={color}
-            />
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="home" size={size} color={color} />
           ),
           tabBarLabel: ({ color }) => (
             <Text variant="labelSmall" style={{ color }}>
@@ -29,21 +27,17 @@ export default function TabsLayout() {
       />
       <Tabs.Screen
         options={{
-          headerTitle: () => <Text variant="titleLarge">Profile</Text>,
-          tabBarIcon: ({ focused, color, size }) => (
-            <Ionicons
-              name={focused ? "person" : "person-outline"}
-              size={size}
-              color={color}
-            />
+          title: "Account",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="grid" size={size} color={color} />
           ),
           tabBarLabel: ({ color }) => (
             <Text variant="labelSmall" style={{ color }}>
-              Profile
+              Account
             </Text>
           ),
         }}
-        name="profile"
+        name="account"
       />
     </Tabs>
   );

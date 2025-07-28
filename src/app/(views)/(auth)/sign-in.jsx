@@ -1,12 +1,15 @@
-import { ScrollView, View } from "react-native";
-import { Text } from "react-native-paper";
+import { ScrollView, TouchableOpacity, View } from "react-native";
+import { Icon, Text, useTheme } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AppLogo from "../../../components/app-logo";
 import Button from "../../../components/button";
 import TextInput from "../../../components/text-input";
 import { router } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function SignIn() {
+  const theme = useTheme();
+
   return (
     <SafeAreaView className="flex-1">
       <ScrollView
@@ -14,8 +17,8 @@ export default function SignIn() {
         contentContainerStyle={{
           flexGrow: 1,
           padding: 16,
-          gap: 24,
           justifyContent: "space-between",
+          gap: 24,
         }}
       >
         <View className="gap-6">
@@ -27,6 +30,34 @@ export default function SignIn() {
           <View className="gap-3">
             <TextInput label="ID Number" keyboardType="numeric" />
             <TextInput label="Password" secureTextEntry={true} />
+            <View className="flex-row justify-end">
+              <TouchableOpacity
+                onPress={() => router.push("/forgot-password")}
+                activeOpacity={0.7}
+                className="flex-row items-center gap-1"
+              >
+                <Text
+                  style={{
+                    color: theme.colors.primary,
+                  }}
+                  variant="labelLarge"
+                >
+                  Forgot Password
+                </Text>
+                <Icon
+                  size={14}
+                  source={(props) => (
+                    <Ionicons
+                      style={{
+                        color: theme.colors.primary,
+                      }}
+                      {...props}
+                      name="chevron-forward-outline"
+                    />
+                  )}
+                />
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
         <Button title="Login" onPress={() => router.push("/home")} />

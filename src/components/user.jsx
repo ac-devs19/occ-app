@@ -1,29 +1,26 @@
-import { Image } from "react-native";
-import { Text } from "react-native-paper";
-import { List } from "react-native-paper";
-import { getPaperTheme } from "../constants/themes/paper-theme";
+import { Image, View } from "react-native";
+import { Text, useTheme } from "react-native-paper";
 
 export default function User() {
-  const paperTheme = getPaperTheme();
+  const theme = useTheme();
 
   return (
-    <List.Item
-      title={<Text variant="titleMedium">Hi, Al Christian</Text>}
-      description={<Text variant="labelMedium">2021-1-03790</Text>}
-      left={(props) => (
-        <Image
-          {...props}
-          source={require("../assets/images/user.png")}
-          className="h-14 w-14 rounded-full"
-        />
-      )}
-      right={(props) => (
-        <List.Icon
-          {...props}
-          color={paperTheme.colors.primary}
-          icon="chevron-right"
-        />
-      )}
-    />
+    <View className="flex-row items-center gap-2">
+      <Image
+        source={require("../assets/images/user.png")}
+        className="h-14 w-14 rounded-full"
+      />
+      <View className="gap-1">
+        <Text
+          style={{
+            color: theme.colors.primary,
+          }}
+          variant="titleMedium"
+        >
+          Hi, Name
+        </Text>
+        <Text variant="labelMedium">ID Number</Text>
+      </View>
+    </View>
   );
 }

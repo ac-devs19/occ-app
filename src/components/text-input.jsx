@@ -1,3 +1,4 @@
+import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
 import { TextInput as TxtInpt } from "react-native-paper";
 
@@ -5,6 +6,7 @@ export default function TextInput({
   label = "",
   secureTextEntry = false,
   keyboardType = "default",
+  ...rest
 }) {
   const [show, setShow] = useState(false);
 
@@ -15,11 +17,18 @@ export default function TextInput({
       outlineStyle={{ borderRadius: 10 }}
       secureTextEntry={secureTextEntry ? !show : false}
       keyboardType={keyboardType}
+      {...rest}
       right={
         secureTextEntry ? (
           <TxtInpt.Icon
+            icon={(props) => (
+              <Ionicons
+                {...props}
+                name={show ? "eye-outline" : "eye-off-outline"}
+                size={24}
+              />
+            )}
             onPress={() => setShow(!show)}
-            icon={show ? "eye" : "eye-off"}
           />
         ) : null
       }

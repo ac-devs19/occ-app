@@ -1,6 +1,6 @@
 import { ScrollView } from "react-native";
 import { RadioButton } from "react-native-paper";
-import { useThemeContext } from "../../../../../contexts/theme-context";
+import { useThemeContext } from "../../../../../../contexts/theme-context";
 
 export default function DarkMode() {
   const { theme, setTheme } = useThemeContext();
