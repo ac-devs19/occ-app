@@ -14,7 +14,7 @@ export default function Index() {
           source={require("../assets/images/splash-icon.png")}
           className="h-72 w-72"
         />
-        <ActivityIndicator size={40} />
+        <ActivityIndicator size={30} />
       </View>
     </View>
   ) : user ? (

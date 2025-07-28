@@ -39,7 +39,7 @@ export default function IdVerification() {
           />
         </View>
         <View className="gap-2">
-          <Text variant="titleLarge">ID Verification</Text>
+          <Text variant="titleLarge">ID Number Verification</Text>
           <Text variant="labelLarge">
             Please enter the one-time password (OTP) that we sent to
             name@gmail.com

@@ -13,7 +13,7 @@ export default function EnrollmentRecord() {
           }}
           className="p-4"
         >
-          <Text style={{ color: "white" }} variant="titleMedium">
+          <Text style={{ color: theme.colors.onPrimary }} variant="titleMedium">
             First Year | 2025 - 2026 First Semester
           </Text>
         </View>

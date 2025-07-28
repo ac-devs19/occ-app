@@ -6,6 +6,7 @@ export default function ProfileLayout() {
       screenOptions={{
         headerTitleStyle: {
           fontFamily: "Figtree-Medium",
+          fontSize: 18,
         },
       }}
     >
@@ -32,6 +33,12 @@ export default function ProfileLayout() {
           title: "Settings",
         }}
         name="profile/setting"
+      />
+      <Stack.Screen
+        options={{
+          title: "Change Password",
+        }}
+        name="profile/settings/change-password"
       />
       <Stack.Screen
         options={{

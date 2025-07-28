@@ -4,7 +4,7 @@ export default function LoadingScreen({ visible = false }) {
   return (
     <Portal>
       <Modal visible={visible}>
-        <ActivityIndicator size={40} />
+        <ActivityIndicator size={30} />
       </Modal>
     </Portal>
   );

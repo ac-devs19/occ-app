@@ -6,8 +6,10 @@ export default function TabsLayout() {
   return (
     <Tabs
       screenOptions={{
+        headerTitleAlign: "center",
         headerTitleStyle: {
-          fontFamily: "Figtree-Medium",
+          fontFamily: "Figtree-SemiBold",
+          fontSize: 18,
         },
       }}
     >

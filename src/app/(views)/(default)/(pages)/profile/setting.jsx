@@ -20,7 +20,7 @@ export default function Setting() {
         {
           subtitle: "Change Password",
           icon: "key-outline",
-          href: "/",
+          href: "/profile/settings/change-password",
         },
       ],
     },

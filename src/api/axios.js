@@ -2,7 +2,7 @@ import axiosClient from "axios";
 import { getToken } from "../services/auth-storage";
 
 const axios = axiosClient.create({
-  baseURL: `${process.env.EXPO_PUBLIC_API_URL}/api`,
+  baseURL: "",
   headers: {
     Accept: "application/json",
     "Content-Type": "multipart/form-data",
