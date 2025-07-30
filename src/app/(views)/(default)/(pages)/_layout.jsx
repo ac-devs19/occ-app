@@ -36,6 +36,12 @@ export default function ProfileLayout() {
       />
       <Stack.Screen
         options={{
+          title: "Personal Information",
+        }}
+        name="profile/settings/personal-information"
+      />
+      <Stack.Screen
+        options={{
           title: "Change Password",
         }}
         name="profile/settings/change-password"

@@ -1,4 +1,4 @@
-import { Dimensions, ScrollView, View } from "react-native";
+import { Dimensions, Image, ScrollView, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AppLogo from "../../../../components/app-logo";
 import { IconButton, Text, useTheme } from "react-native-paper";
@@ -29,8 +29,8 @@ export default function Home() {
 
   return (
     <SafeAreaView className="flex-1">
-      <ScrollView contentContainerStyle={{ flexGrow: 1, padding: padding }}>
-        <View className="gap-8">
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <View className="p-4 gap-8">
           <View className="flex-row items-center justify-between">
             <AppLogo />
             <IconButton
@@ -38,13 +38,20 @@ export default function Home() {
               icon={(props) => (
                 <Ionicons
                   {...props}
-                  name="notifications"
+                  name="notifications-outline"
                   color={theme.colors.primary}
                 />
               )}
             />
           </View>
           <User />
+        </View>
+        <Image
+          className="w-full h-40"
+          resizeMode="contain"
+          source={require("../../../../assets/images/logo-banner.png")}
+        />
+        <View className="p-4">
           <View className="flex-row flex-wrap">
             {items.map((item, index) => (
               <View
@@ -57,12 +64,12 @@ export default function Home() {
               >
                 <IconButton
                   onPress={() => router.push(item.href)}
-                  size={55}
+                  size={50}
                   mode="contained-tonal"
                   icon={() => (
                     <Ionicons
                       name={item.icon}
-                      size={40}
+                      size={35}
                       color={theme.colors.primary}
                     />
                   )}

@@ -15,7 +15,7 @@ export default function Setting() {
         {
           subtitle: "Personal Information",
           icon: "person-outline",
-          href: "/",
+          href: "/profile/settings/personal-information",
         },
         {
           subtitle: "Change Password",

@@ -1,6 +1,6 @@
 import { Tabs } from "expo-router";
 import { Text } from "react-native-paper";
-import { Ionicons } from "@expo/vector-icons";
+import { House, User } from "lucide-react-native";
 
 export default function TabsLayout() {
   return (
@@ -16,9 +16,7 @@ export default function TabsLayout() {
       <Tabs.Screen
         options={{
           headerShown: false,
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home" size={size} color={color} />
-          ),
+          tabBarIcon: ({ color, size }) => <House size={size} color={color} />,
           tabBarLabel: ({ color }) => (
             <Text variant="labelSmall" style={{ color }}>
               Home
@@ -30,9 +28,7 @@ export default function TabsLayout() {
       <Tabs.Screen
         options={{
           title: "Account",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="grid" size={size} color={color} />
-          ),
+          tabBarIcon: ({ color, size }) => <User size={size} color={color} />,
           tabBarLabel: ({ color }) => (
             <Text variant="labelSmall" style={{ color }}>
               Account

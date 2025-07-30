@@ -6,9 +6,18 @@ import Button from "../../../components/button";
 import TextInput from "../../../components/text-input";
 import { router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
+import { useState } from "react";
+import { useAuthContext } from "../../../contexts/auth-context";
 
 export default function SignIn() {
   const theme = useTheme();
+  const { login } = useAuthContext();
+  const [id_number, setIdNumber] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = () => {
+    login({ user_id_no: id_number, password });
+  };
 
   return (
     <SafeAreaView className="flex-1">
@@ -28,8 +37,18 @@ export default function SignIn() {
             <Text variant="bodyLarge">Please login your account.</Text>
           </View>
           <View className="gap-3">
-            <TextInput label="ID Number" keyboardType="numeric" />
-            <TextInput label="Password" secureTextEntry={true} />
+            <TextInput
+              value={id_number}
+              onChangeText={(text) => setIdNumber(text)}
+              label="ID Number"
+              keyboardType="numeric"
+            />
+            <TextInput
+              value={password}
+              onChangeText={(text) => setPassword(text)}
+              label="Password"
+              secureTextEntry={true}
+            />
             <View className="flex-row justify-end">
               <TouchableOpacity
                 onPress={() => router.push("/forgot-password")}
