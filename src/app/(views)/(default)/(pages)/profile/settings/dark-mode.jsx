@@ -11,9 +11,30 @@ export default function DarkMode() {
         onValueChange={(value) => setTheme(value)}
         value={theme}
       >
-        <RadioButton.Item label="Off" value="light" />
-        <RadioButton.Item label="On" value="dark" />
-        <RadioButton.Item label="System" value="system" />
+        <RadioButton.Item
+          labelStyle={{
+            fontFamily: "Figtree-Medium",
+            fontSize: 14,
+          }}
+          label="Off"
+          value="light"
+        />
+        <RadioButton.Item
+          labelStyle={{
+            fontFamily: "Figtree-Medium",
+            fontSize: 14,
+          }}
+          label="On"
+          value="dark"
+        />
+        <RadioButton.Item
+          labelStyle={{
+            fontFamily: "Figtree-Medium",
+            fontSize: 14,
+          }}
+          label="System"
+          value="system"
+        />
       </RadioButton.Group>
     </ScrollView>
   );

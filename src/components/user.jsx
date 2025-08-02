@@ -1,7 +1,9 @@
 import { Image, View } from "react-native";
 import { Text, useTheme } from "react-native-paper";
+import { useAuthContext } from "../contexts/auth-context";
 
 export default function User() {
+  const { user } = useAuthContext();
   const theme = useTheme();
 
   return (
@@ -13,13 +15,21 @@ export default function User() {
       <View className="gap-1">
         <Text
           style={{
+            fontFamily: "Figtree-Bold",
+            fontSize: 14,
             color: theme.colors.primary,
           }}
-          variant="titleMedium"
         >
-          Hi, Name
+          Hi, {user.user_information.first_name}
         </Text>
-        <Text variant="labelMedium">ID Number</Text>
+        <Text
+          style={{
+            fontFamily: "Figtree-Medium",
+            fontSize: 12,
+          }}
+        >
+          {user.user_id_no}
+        </Text>
       </View>
     </View>
   );

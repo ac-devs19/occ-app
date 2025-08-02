@@ -2,7 +2,7 @@ import axiosClient from "axios";
 import { getToken } from "../services/auth-storage";
 
 const axios = axiosClient.create({
-  baseURL: "",
+  baseURL: "https://occph.com/api",
   headers: {
     Accept: "application/json",
     "Content-Type": "multipart/form-data",

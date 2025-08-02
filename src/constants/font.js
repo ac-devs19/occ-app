@@ -1,66 +1,66 @@
 export const Fonts = {
-  bodyLarge: {
+  displaySmall: {
     fontFamily: "Figtree-Regular",
-    fontSize: 16,
+    fontSize: 36,
   },
-  bodyMedium: {
+  displayMedium: {
     fontFamily: "Figtree-Regular",
-    fontSize: 14,
+    fontSize: 45,
   },
-  bodySmall: {
+  displayLarge: {
     fontFamily: "Figtree-Regular",
-    fontSize: 12,
+    fontSize: 57,
   },
 
-  titleLarge: {
-    fontFamily: "Figtree-Bold",
-    fontSize: 22,
+  headlineSmall: {
+    fontFamily: "Figtree-Regular",
+    fontSize: 24,
+  },
+  headlineMedium: {
+    fontFamily: "Figtree-Regular",
+    fontSize: 28,
+  },
+  headlineLarge: {
+    fontFamily: "Figtree-Regular",
+    fontSize: 32,
+  },
+
+  titleSmall: {
+    fontFamily: "Figtree-SemiBold",
+    fontSize: 14,
   },
   titleMedium: {
     fontFamily: "Figtree-SemiBold",
     fontSize: 16,
   },
-  titleSmall: {
-    fontFamily: "Figtree-Medium",
+  titleLarge: {
+    fontFamily: "Figtree-Regular",
+    fontSize: 22,
+  },
+
+  labelSmall: {
+    fontFamily: "Figtree-SemiBold",
+    fontSize: 11,
+  },
+  labelMedium: {
+    fontFamily: "Figtree-SemiBold",
+    fontSize: 12,
+  },
+  labelLarge: {
+    fontFamily: "Figtree-SemiBold",
     fontSize: 14,
   },
 
-  labelLarge: {
-    fontFamily: "Figtree-Medium",
-    fontSize: 14,
-  },
-  labelMedium: {
+  bodySmall: {
     fontFamily: "Figtree-Regular",
     fontSize: 12,
   },
-  labelSmall: {
+  bodyMedium: {
     fontFamily: "Figtree-Regular",
-    fontSize: 11,
+    fontSize: 14,
   },
-
-  headlineLarge: {
-    fontFamily: "Figtree-ExtraBold",
-    fontSize: 32,
-  },
-  headlineMedium: {
-    fontFamily: "Figtree-Bold",
-    fontSize: 28,
-  },
-  headlineSmall: {
-    fontFamily: "Figtree-SemiBold",
-    fontSize: 24,
-  },
-
-  displayLarge: {
-    fontFamily: "Figtree-ExtraBold",
-    fontSize: 57,
-  },
-  displayMedium: {
-    fontFamily: "Figtree-Bold",
-    fontSize: 45,
-  },
-  displaySmall: {
-    fontFamily: "Figtree-SemiBold",
-    fontSize: 36,
+  bodyLarge: {
+    fontFamily: "Figtree-Regular",
+    fontSize: 16,
   },
 };

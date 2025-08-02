@@ -4,11 +4,11 @@ import { useTheme } from "react-native-paper";
 
 export default function AuthLayout() {
   const theme = useTheme();
-  // const { user } = useAuthContext();
+  const { user } = useAuthContext();
 
-  // if (user) {
-  //   return <Redirect href="/home" />;
-  // }
+  if (user) {
+    return <Redirect href="/home" />;
+  }
 
   return (
     <Stack
@@ -47,7 +47,7 @@ export default function AuthLayout() {
             backgroundColor: theme.colors.background,
           },
         }}
-        name="new-password"
+        name="reset-password"
       />
     </Stack>
   );

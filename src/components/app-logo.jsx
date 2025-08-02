@@ -8,28 +8,37 @@ export default function AppLogo() {
   return (
     <View className="flex-row items-center gap-2">
       <ImageLogo className="h-14 w-14" />
-      <View>
+      <View
+        style={{
+          backgroundColor: theme.colors.primary,
+        }}
+        className="w-0.5 rounded-full h-full"
+      />
+      <View className="gap-1">
         <Text
           style={{
+            fontSize: 14,
+            fontFamily: "Allrounder-Medium",
             color: theme.colors.primary,
           }}
-          variant="titleMedium"
         >
           Opol
         </Text>
         <Text
           style={{
+            fontSize: 14,
+            fontFamily: "Allrounder-Medium",
             color: theme.colors.primary,
           }}
-          variant="titleMedium"
         >
           Community
         </Text>
         <Text
           style={{
+            fontSize: 14,
+            fontFamily: "Allrounder-Medium",
             color: theme.colors.primary,
           }}
-          variant="titleMedium"
         >
           College
         </Text>

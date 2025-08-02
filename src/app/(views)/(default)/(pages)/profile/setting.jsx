@@ -53,10 +53,26 @@ export default function Setting() {
             <List.Item
               onPress={() => router.push(subitem.href)}
               key={subindex}
-              title={<Text variant="labelLarge">{subitem.subtitle}</Text>}
+              title={
+                <Text
+                  style={{
+                    fontFamily: "Figtree-Medium",
+                    fontSize: 14,
+                  }}
+                >
+                  {subitem.subtitle}
+                </Text>
+              }
               description={
                 subitem.description ? (
-                  <Text variant="labelMedium">{subitem.description}</Text>
+                  <Text
+                    style={{
+                      fontFamily: "Figtree-Medium",
+                      fontSize: 12,
+                    }}
+                  >
+                    {subitem.description}
+                  </Text>
                 ) : null
               }
               left={(props) => (

@@ -2,10 +2,11 @@ import { View, ScrollView } from "react-native";
 import { Text, useTheme } from "react-native-paper";
 import TextInput from "../../../components/text-input";
 import Button from "../../../components/button";
-import { router } from "expo-router";
+import { useNavigation } from "@react-navigation/native";
 
 export default function IdVerification() {
   const theme = useTheme();
+  const navigation = useNavigation();
 
   return (
     <ScrollView
@@ -39,15 +40,42 @@ export default function IdVerification() {
           />
         </View>
         <View className="gap-2">
-          <Text variant="titleLarge">ID Number Verification</Text>
-          <Text variant="labelLarge">
-            Please enter the one-time password (OTP) that we sent to
-            name@gmail.com
+          <Text
+            style={{
+              fontFamily: "Figtree-Bold",
+              fontSize: 24,
+            }}
+          >
+            ID Number Verification
+          </Text>
+          <Text
+            style={{
+              fontFamily: "Figtree-Regular",
+              fontSize: 14,
+            }}
+          >
+            Please enter the one-time password (OTP) that we sent to{" "}
+            <Text
+              style={{
+                fontFamily: "Figtree-SemiBold",
+                fontSize: 14,
+              }}
+            >
+              name@gmail.com
+            </Text>
           </Text>
         </View>
         <TextInput label="OTP" keyboardType="numeric" maxLength={6} />
       </View>
-      <Button title="Verify" onPress={() => router.push("/new-password")} />
+      <Button
+        title="Verify"
+        onPress={() =>
+          navigation.reset({
+            index: 0,
+            routes: [{ name: "reset-password" }],
+          })
+        }
+      />
     </ScrollView>
   );
 }

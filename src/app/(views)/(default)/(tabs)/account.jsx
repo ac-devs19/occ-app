@@ -3,8 +3,10 @@ import User from "../../../../components/user";
 import { List, Text, useTheme } from "react-native-paper";
 import { router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
+import { useAuthContext } from "../../../../contexts/auth-context";
 
 export default function Account() {
+  const { logout } = useAuthContext();
   const theme = useTheme();
 
   const items = [
@@ -12,11 +14,6 @@ export default function Account() {
       title: "Settings",
       icon: "settings-outline",
       href: "/profile/setting",
-    },
-    {
-      title: "Logout",
-      icon: "log-out-outline",
-      href: "/",
     },
   ];
 
@@ -29,11 +26,15 @@ export default function Account() {
         <List.Item
           onPress={() => router.push(item.href)}
           key={index}
-          title={<Text variant="labelLarge">{item.title}</Text>}
-          description={
-            item.description ? (
-              <Text variant="labelMedium">{item.description}</Text>
-            ) : null
+          title={
+            <Text
+              style={{
+                fontFamily: "Figtree-Medium",
+                fontSize: 14,
+              }}
+            >
+              {item.title}
+            </Text>
           }
           left={(props) => <Ionicons {...props} size={24} name={item.icon} />}
           right={(props) => (
@@ -46,6 +47,30 @@ export default function Account() {
           )}
         />
       ))}
+      <List.Item
+        onPress={logout}
+        title={
+          <Text
+            style={{
+              fontFamily: "Figtree-Medium",
+              fontSize: 14,
+            }}
+          >
+            Logout
+          </Text>
+        }
+        left={(props) => (
+          <Ionicons {...props} size={24} name="log-out-outline" />
+        )}
+        right={(props) => (
+          <Ionicons
+            {...props}
+            size={20}
+            color={theme.colors.primary}
+            name="chevron-forward-outline"
+          />
+        )}
+      />
     </ScrollView>
   );
 }

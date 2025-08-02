@@ -1,4 +1,5 @@
 import "../../global.css";
+
 import { SplashScreen, Stack } from "expo-router";
 import { useFonts } from "expo-font";
 import { useEffect } from "react";
@@ -20,11 +21,13 @@ function InnerLayout() {
   const paperTheme = getPaperTheme(isDark);
 
   const [loaded, error] = useFonts({
-    "Figtree-Bold": require("../assets/fonts/Figtree-Bold.ttf"),
+    "Figtree-Black": require("../assets/fonts/Figtree-Black.ttf"),
     "Figtree-ExtraBold": require("../assets/fonts/Figtree-ExtraBold.ttf"),
+    "Figtree-Bold": require("../assets/fonts/Figtree-Bold.ttf"),
+    "Figtree-SemiBold": require("../assets/fonts/Figtree-SemiBold.ttf"),
     "Figtree-Medium": require("../assets/fonts/Figtree-Medium.ttf"),
     "Figtree-Regular": require("../assets/fonts/Figtree-Regular.ttf"),
-    "Figtree-SemiBold": require("../assets/fonts/Figtree-SemiBold.ttf"),
+    "Allrounder-Medium": require("../assets/fonts/Allrounder-Medium.ttf"),
   });
 
   useEffect(() => {

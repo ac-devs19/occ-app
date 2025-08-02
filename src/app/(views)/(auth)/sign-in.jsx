@@ -1,4 +1,4 @@
-import { ScrollView, TouchableOpacity, View } from "react-native";
+import { Alert, ScrollView, TouchableOpacity, View } from "react-native";
 import { Icon, Text, useTheme } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AppLogo from "../../../components/app-logo";
@@ -16,6 +16,9 @@ export default function SignIn() {
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
+    if (!id_number || !password) {
+      return Alert.alert("Error!", "All fields are required.");
+    }
     login({ user_id_no: id_number, password });
   };
 
@@ -33,8 +36,22 @@ export default function SignIn() {
         <View className="gap-6">
           <AppLogo />
           <View className="gap-2">
-            <Text variant="headlineLarge">Hello, Welcome!</Text>
-            <Text variant="bodyLarge">Please login your account.</Text>
+            <Text
+              style={{
+                fontFamily: "Figtree-ExtraBold",
+                fontSize: 30,
+              }}
+            >
+              Hello, Welcome!
+            </Text>
+            <Text
+              style={{
+                fontFamily: "Figtree-Regular",
+                fontSize: 14,
+              }}
+            >
+              Please login your account.
+            </Text>
           </View>
           <View className="gap-3">
             <TextInput
@@ -57,9 +74,10 @@ export default function SignIn() {
               >
                 <Text
                   style={{
+                    fontFamily: "Figtree-SemiBold",
+                    fontSize: 14,
                     color: theme.colors.primary,
                   }}
-                  variant="labelLarge"
                 >
                   Forgot Password
                 </Text>
@@ -79,7 +97,7 @@ export default function SignIn() {
             </View>
           </View>
         </View>
-        <Button title="Login" onPress={() => router.push("/home")} />
+        <Button title="Login" onPress={handleLogin} />
       </ScrollView>
     </SafeAreaView>
   );

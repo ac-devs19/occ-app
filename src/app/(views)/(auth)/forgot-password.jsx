@@ -39,8 +39,20 @@ export default function ForgotPassword() {
           />
         </View>
         <View className="gap-2">
-          <Text variant="titleLarge">Forgot Password</Text>
-          <Text variant="labelLarge">
+          <Text
+            style={{
+              fontFamily: "Figtree-Bold",
+              fontSize: 24,
+            }}
+          >
+            Forgot Password
+          </Text>
+          <Text
+            style={{
+              fontFamily: "Figtree-Regular",
+              fontSize: 14,
+            }}
+          >
             Please enter your ID Number, and we'll send you a one-time password
             (OTP) for verification.
           </Text>

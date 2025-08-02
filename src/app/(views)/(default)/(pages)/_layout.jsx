@@ -4,6 +4,7 @@ export default function ProfileLayout() {
   return (
     <Stack
       screenOptions={{
+        headerShadowVisible: false,
         headerTitleStyle: {
           fontFamily: "Figtree-Medium",
           fontSize: 18,

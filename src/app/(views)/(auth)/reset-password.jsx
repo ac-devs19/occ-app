@@ -1,10 +1,34 @@
-import { View, ScrollView } from "react-native";
+import { View, ScrollView, Alert, BackHandler } from "react-native";
 import { Text, useTheme } from "react-native-paper";
 import TextInput from "../../../components/text-input";
 import Button from "../../../components/button";
+import { router, useFocusEffect } from "expo-router";
+import { useCallback } from "react";
 
 export default function NewPassword() {
   const theme = useTheme();
+
+  useFocusEffect(
+    useCallback(() => {
+      const backAction = () => {
+        Alert.alert("Hold on!", "Are you sure you want to cancel operation?", [
+          {
+            text: "No",
+            style: "cancel",
+          },
+          { text: "Yes", onPress: () => router.replace("/sign-in") },
+        ]);
+        return true;
+      };
+
+      const backHandler = BackHandler.addEventListener(
+        "hardwareBackPress",
+        backAction
+      );
+
+      return () => backHandler.remove();
+    }, [])
+  );
 
   return (
     <ScrollView
@@ -38,8 +62,22 @@ export default function NewPassword() {
           />
         </View>
         <View className="gap-2">
-          <Text variant="titleLarge">Create New Password</Text>
-          <Text variant="labelLarge">Please make a new password.</Text>
+          <Text
+            style={{
+              fontFamily: "Figtree-Bold",
+              fontSize: 24,
+            }}
+          >
+            Create New Password
+          </Text>
+          <Text
+            style={{
+              fontFamily: "Figtree-Regular",
+              fontSize: 14,
+            }}
+          >
+            Please make a new password.
+          </Text>
         </View>
         <View className="gap-3">
           <TextInput label="New Password" secureTextEntry={true} />

@@ -1,4 +1,4 @@
-import { Eye, EyeOff } from "lucide-react-native";
+import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
 import { TextInput as TxtInpt } from "react-native-paper";
 
@@ -21,9 +21,12 @@ export default function TextInput({
       right={
         secureTextEntry ? (
           <TxtInpt.Icon
-            icon={(props) =>
-              show ? <Eye {...props} /> : <EyeOff {...props} />
-            }
+            icon={(props) => (
+              <Ionicons
+                {...props}
+                name={show ? "eye-outline" : "eye-off-outline"}
+              />
+            )}
             onPress={() => setShow(!show)}
           />
         ) : null
