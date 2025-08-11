@@ -42,8 +42,9 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "4e0c69b1-20b6-4d28-8744-539f2bc991f9"
+        "projectId": "f192970f-288b-43f1-be87-235b843eb0c6"
       }
-    }
+    },
+    "owner": "ac-devs19"
   }
 }
