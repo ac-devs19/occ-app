@@ -28,7 +28,6 @@ export default function RootLayout() {
     "Figtree-Medium": require("../assets/fonts/Figtree-Medium.ttf"),
     "Figtree-Regular": require("../assets/fonts/Figtree-Regular.ttf"),
     "Figtree-SemiBold": require("../assets/fonts/Figtree-SemiBold.ttf"),
-    "Allrounder-Medium": require("../assets/fonts/Allrounder-Medium.ttf"),
   });
 
   React.useEffect(() => {

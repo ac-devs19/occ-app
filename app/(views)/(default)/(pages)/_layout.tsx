@@ -1,9 +1,24 @@
-import { Stack } from "expo-router";
+import { router, Stack } from "expo-router";
+import { TouchableOpacity } from "react-native";
+import Icon from "~/components/icon";
 
 export default function PagesLayout() {
   return (
     <Stack
       screenOptions={{
+        headerLeft: () => {
+          if (router.canGoBack()) {
+            return (
+              <TouchableOpacity
+                activeOpacity={0.7}
+                onPress={() => router.back()}
+              >
+                <Icon name="ChevronLeft" className="text-primary" />
+              </TouchableOpacity>
+            );
+          }
+        },
+        headerTitleAlign: "center",
         headerShadowVisible: false,
         headerTitleStyle: {
           fontFamily: "Figtree-SemiBold",
@@ -31,21 +46,21 @@ export default function PagesLayout() {
       />
       <Stack.Screen
         options={{
-          title: "Settings",
-        }}
-        name="account/settings/index"
-      />
-      <Stack.Screen
-        options={{
           title: "Personal Information",
         }}
-        name="account/settings/personal-information"
+        name="account/personal-information"
       />
       <Stack.Screen
         options={{
           title: "Change Password",
         }}
-        name="account/settings/change-password"
+        name="account/change-password"
+      />
+      <Stack.Screen
+        options={{
+          title: "Feedback",
+        }}
+        name="account/feedback"
       />
     </Stack>
   );

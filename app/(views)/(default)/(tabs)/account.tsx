@@ -1,10 +1,10 @@
 import { View, ScrollView, TouchableOpacity, Image, Alert } from "react-native";
-import Icon from "~/components/icon";
+import Icon, { LucideIconName } from "~/components/icon";
 import { Text } from "~/components/ui/text";
 import User from "~/components/user";
 import Constants from "expo-constants";
 import { useAuthContext } from "~/contexts/auth-context";
-import { router } from "expo-router";
+import { Route, router } from "expo-router";
 
 export default function Account() {
   const { logout } = useAuthContext();
@@ -22,6 +22,28 @@ export default function Account() {
     ]);
   };
 
+  const items: {
+    title: string;
+    icon: LucideIconName;
+    href: Route;
+  }[] = [
+    {
+      title: "Personal Information",
+      icon: "CircleUser",
+      href: "/account/personal-information",
+    },
+    {
+      title: "Change Password",
+      icon: "Lock",
+      href: "/account/change-password",
+    },
+    // {
+    //   title: "Feedback",
+    //   icon: "MessageSquareReply",
+    //   href: "/account/feedback",
+    // },
+  ];
+
   return (
     <ScrollView
       contentContainerStyle={{
@@ -34,26 +56,29 @@ export default function Account() {
           <User />
         </View>
         <View className="gap-2">
-          <TouchableOpacity
-            onPress={() => router.push("/account/settings")}
-            activeOpacity={0.7}
-            className="flex-row items-center justify-between pl-4 pr-6 py-2.5"
-          >
-            <View className="flex-row items-center gap-4">
+          {items.map((item, index) => (
+            <TouchableOpacity
+              key={index}
+              onPress={() => router.push(item.href)}
+              activeOpacity={0.7}
+              className="flex-row items-center justify-between pl-4 pr-6 py-2.5"
+            >
+              <View className="flex-row items-center gap-4">
+                <Icon
+                  name={item.icon}
+                  strokeWidth={1.7}
+                  className="text-primary"
+                />
+                <Text className="font-figtree-medium">{item.title}</Text>
+              </View>
               <Icon
-                name="Settings"
-                strokeWidth={1.7}
+                name="ChevronRight"
+                strokeWidth={2}
+                size={20}
                 className="text-primary"
               />
-              <Text className="font-figtree-medium">Settings</Text>
-            </View>
-            <Icon
-              name="ChevronRight"
-              strokeWidth={2}
-              size={20}
-              className="text-primary"
-            />
-          </TouchableOpacity>
+            </TouchableOpacity>
+          ))}
           <TouchableOpacity
             onPress={handleLogout}
             activeOpacity={0.7}

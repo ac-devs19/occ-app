@@ -1,5 +1,10 @@
 import { Tabs } from "expo-router";
-import { Image, View } from "react-native";
+import {
+  Image,
+  TouchableOpacity,
+  TouchableOpacityProps,
+  View,
+} from "react-native";
 import Icon from "~/components/icon";
 
 export default function TabsLayout() {
@@ -23,6 +28,12 @@ export default function TabsLayout() {
           fontSize: 11,
           textTransform: "capitalize",
         },
+        tabBarButton: (props) => (
+          <TouchableOpacity
+            {...(props as TouchableOpacityProps)}
+            activeOpacity={0.7}
+          />
+        ),
       }}
     >
       <Tabs.Screen

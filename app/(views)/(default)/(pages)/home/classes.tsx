@@ -114,12 +114,30 @@ export default function Classes() {
 
   const sortedClasses = React.useMemo(() => {
     if (!data?.classes) return [];
+
     return [...data.classes].sort((a, b) => {
       const isTodayA =
         a.day === today || a.secondary_schedule?.day === today ? 1 : 0;
       const isTodayB =
         b.day === today || b.secondary_schedule?.day === today ? 1 : 0;
-      return isTodayB - isTodayA;
+
+      if (isTodayA !== isTodayB) {
+        return isTodayB - isTodayA;
+      }
+
+      if (isTodayA && isTodayB) {
+        const aStart =
+          a.start_time === "TBA"
+            ? Infinity
+            : Number(a.start_time.replace(":", ""));
+        const bStart =
+          b.start_time === "TBA"
+            ? Infinity
+            : Number(b.start_time.replace(":", ""));
+        return aStart - bStart;
+      }
+
+      return 0;
     });
   }, [data?.classes, today]);
 
