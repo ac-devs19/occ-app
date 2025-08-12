@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { router } from "expo-router";
-import React from "react";
-import { View, ScrollView, Alert } from "react-native";
+import React, { useState } from "react";
+import { View, ScrollView, Alert, RefreshControl } from "react-native";
 import axios from "~/api/axios";
 import LoadingScreen from "~/components/loading-screen";
 import {
@@ -43,19 +43,28 @@ export interface ClassGroup {
 
 export default function EnrollmentRecord() {
   const { user } = useAuthContext();
+  const [refreshing, setRefreshing] = useState(false);
+
+  const getEnrollmentRecord = async () => {
+    try {
+      const { data } = await axios.get("/mobile/enrollment-record");
+      return data;
+    } catch (error: any) {
+      const message = error.response?.data?.message;
+      throw new Error(message);
+    }
+  };
 
   const { data, isLoading, error, isError } = useQuery<ClassGroup[]>({
     queryKey: ["enrollment_record", user?.id],
-    queryFn: async () => {
-      try {
-        const { data } = await axios.get("/mobile/enrollment-record");
-        return data;
-      } catch (error: any) {
-        const message = error.response?.data?.message;
-        throw new Error(message);
-      }
-    },
+    queryFn: getEnrollmentRecord,
   });
+
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await getEnrollmentRecord();
+    setRefreshing(false);
+  };
 
   function capitalizeFirstLetter(str: string) {
     if (!str) return "";
@@ -91,7 +100,17 @@ export default function EnrollmentRecord() {
       },
     ])
   ) : (
-    <ScrollView contentContainerStyle={{ flexGrow: 1, paddingBottom: 16 }}>
+    <ScrollView
+      refreshControl={
+        <RefreshControl
+          refreshing={refreshing}
+          onRefresh={onRefresh}
+          colors={["#2563EB"]}
+          tintColor={"#2563EB"}
+        />
+      }
+      contentContainerStyle={{ flexGrow: 1, paddingBottom: 16 }}
+    >
       <View className="flex-1">
         {data?.map((record, recordIndex) => (
           <React.Fragment key={recordIndex}>

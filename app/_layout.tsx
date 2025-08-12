@@ -9,6 +9,9 @@ import * as SplashScreen from "expo-splash-screen";
 import { Color } from "~/constants/color";
 import { AuthProvider } from "~/contexts/auth-context";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import * as NavigationBar from "expo-navigation-bar";
+
+NavigationBar.setButtonStyleAsync("dark");
 
 SplashScreen.preventAutoHideAsync();
 

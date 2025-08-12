@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Alert, ScrollView, View } from "react-native";
+import { Alert, RefreshControl, ScrollView, View } from "react-native";
 import axios from "~/api/axios";
 import { Text } from "~/components/ui/text";
 import { useAuthContext } from "~/contexts/auth-context";
@@ -10,7 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "~/components/ui/card";
-import React from "react";
+import React, { useState } from "react";
 import Icon from "~/components/icon";
 import LoadingScreen from "~/components/loading-screen";
 import { router } from "expo-router";
@@ -54,19 +54,28 @@ interface ClassesResponse {
 
 export default function Classes() {
   const { user } = useAuthContext();
+  const [refreshing, setRefreshing] = useState(false);
+
+  const getCurrentStudentClasses = async () => {
+    try {
+      const { data } = await axios.get("/mobile/current-student-classes");
+      return data;
+    } catch (error: any) {
+      const message = error.response?.data?.message;
+      throw new Error(message);
+    }
+  };
 
   const { data, isLoading, error, isError } = useQuery<ClassesResponse>({
     queryKey: ["current_classes", user?.id],
-    queryFn: async () => {
-      try {
-        const { data } = await axios.get("/mobile/current-student-classes");
-        return data;
-      } catch (error: any) {
-        const message = error.response?.data?.message;
-        throw new Error(message);
-      }
-    },
+    queryFn: getCurrentStudentClasses,
   });
+
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await getCurrentStudentClasses();
+    setRefreshing(false);
+  };
 
   function convertToAMPM(time: string) {
     if (!time || typeof time !== "string" || !time.includes(":")) return "";
@@ -158,7 +167,17 @@ export default function Classes() {
           {data?.schoolYear.semester_name} Semester
         </Text>
       </View>
-      <ScrollView contentContainerStyle={{ flexGrow: 1, gap: 16, padding: 16 }}>
+      <ScrollView
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            colors={["#2563EB"]}
+            tintColor={"#2563EB"}
+          />
+        }
+        contentContainerStyle={{ flexGrow: 1, gap: 16, padding: 16 }}
+      >
         {sortedClasses.map((classInfo, index) => (
           <React.Fragment key={index}>
             <Card
